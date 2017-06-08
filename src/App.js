@@ -1,13 +1,21 @@
 import React from 'react';
+import Card from './card';
  
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      count: 0,
+      cards: {
+        
+      }
     };
   }
  
+handleCardClick = function() {
+
+}
+
+
   render() {
     return (
       <div>

@@ -4,7 +4,7 @@ const Card = ({question}) => {
 
 
     return (
-        <div onClick={}>
+        <div>
 
         </div>
     )
