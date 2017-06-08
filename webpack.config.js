@@ -1,28 +1,26 @@
 const path = require('path');
- 
+const webpack = require('webpack');
+
 module.exports = {
-  context: path.join(__dirname, 'src'),
-  entry: [
-    './main.js',
-  ],
-  output: {
-    path: path.join(__dirname, 'www'),
-    filename: 'bundle.js',
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: [
-          'babel-loader',
-        ],
-      },
+    entry: [
+        './src/main.js'
     ],
-  },
-  resolve: {
-    modules: [
-      path.join(__dirname, 'node_modules'),
+    output: {
+        path: path.join(__dirname, 'www'),
+        filename: 'bundle.js'
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
     ],
-  },
-};
+    module: {
+        loaders: [
+            { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
+
+            { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/},
+
+            { test: /(.css|\.scss)$/, loaders: ['style', 'css']},
+
+            { test: /\.html$/, loader: 'html-loader', exclude: /node_modules/}
+        ]
+    }
+}
